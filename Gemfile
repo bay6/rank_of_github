@@ -4,6 +4,9 @@ gem 'rails', "~> 4.0.0"
 gem 'sqlite3'
 gem 'pry-rails'
 
+# Github API
+gem 'github_api'
+
 # JSON
 gem 'jbuilder', '~> 1.2'
 
