@@ -1,8 +1,12 @@
 source 'http://ruby.taobao.org'
 
 gem 'rails', "~> 4.0.0"
-gem 'sqlite3'
 gem 'pry-rails'
+
+gem 'mongoid'		
+
+group :develop, :test do
+end
 
 # Github API
 gem 'github_api'
