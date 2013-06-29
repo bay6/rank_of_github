@@ -1,5 +1,9 @@
-div.main
-  table class="table table-striped table-hover"
+div.main#search_area
+
+  div class="navbar-search pull-right"
+    input id="searchbox" type="text" class="search-query" placeholder="Search"
+
+  table id="users_table" class="list table table-striped table-hover"
     thead
       tr
         th 排名
@@ -8,6 +12,6 @@ div.main
         th 位置
         th 语言
         th 关注量
-        th 贡献
+        th 贡献值
     tbody
       = render partial: 'user_list', collection: @users, as: :user
