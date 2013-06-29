@@ -7,4 +7,8 @@ module HomeHelper
   def user_url username
     "https://www.github.com/#{username}"
   end
+
+  def ranking_number pagenumber
+    1
+  end
 end
