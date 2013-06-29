@@ -11,14 +11,4 @@ module HomeHelper
   def ranking_number pagenumber
     1
   end
-
-  def perv_url
-    number = params[:page] - 1 if params[:page]
-    "/" + number.to_s
-  end
-
-  def next_url
-    number = params[:page] + 1 if params[:page]
-    "/" + number.to_s
-  end
 end

@@ -22,10 +22,6 @@ div.main#search_area
   div.pagination
     ul.pull-right
       li = paginate @users
-  
-  / div.pagination
-  /   = link_to "#", "&laquo;", class: "first", data-action: "first"
-  /   = link_to "#", "&lsaquo;", class: "previous", data-action: "previous"
-  /   input type="text" readonly="readonly" data-max-page="40" 
-  /   = link_to "#", "&rsaquo;", class: "next", data-action: "next"
-  /   = link_to "#", "&raquo;", class: "last", data-action: "last"
+
+  div#goTop.back-top
+    a href="#" 返回顶部
