@@ -13,3 +13,19 @@
 	height: 60px;
 	line-height: 60px;
 }
+
+.back-top {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	a {
+		float: right;
+		width: 50px;
+		height: 50px;
+		background: url("back-top.png") no-repeat 0 0;
+		text-indent: -9999em;
+	}
+	a:hover {
+		background-position: -50px 0;	
+	}
+}
