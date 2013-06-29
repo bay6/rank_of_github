@@ -14,6 +14,9 @@ gem 'github_api'
 # JSON
 gem 'jbuilder', '~> 1.2'
 
+# Pagination
+gem 'kaminari'
+
 group :doc do
   gem 'sdoc', require: false
 end
