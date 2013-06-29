@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @user = User.page(params[:page]).per(1000)
+    @users = User.page(params[:page]).per(30)
   end
 end

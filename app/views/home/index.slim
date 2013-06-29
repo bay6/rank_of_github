@@ -1,2 +1,12 @@
-div.mian
-	
+div.main
+  table class="table table-bordered"
+    thead
+      tr
+        th 姓名
+        th 头像
+        th 位置
+        th 语言
+        th 关注量
+        th 贡献
+    tbody
+      = render partial: 'user_list', collection: @users, as: :user
