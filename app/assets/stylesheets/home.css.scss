@@ -8,3 +8,8 @@
 .table {
 	@include table-base;
 }
+
+.search {
+	height: 60px;
+	line-height: 60px;
+}
