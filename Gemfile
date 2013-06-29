@@ -29,4 +29,5 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'slim'
+gem 'simple_form'
 

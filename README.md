@@ -5,8 +5,4 @@ simple of analyze github data , report as line chart
 
 requirement:
 
-1. rails 4.0.0
-
-2. ruby 2.0.0p195
-
-update
+Rank of Github runs on Rails 4.0.0, please check your Rails version before you run this APP.
