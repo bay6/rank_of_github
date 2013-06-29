@@ -14,4 +14,12 @@ $(document).ready ->
 		jo.show()
 
 
+$(document).ready ->
+	$("#searchbox").keyup ->
+		t = $('table')
+		data = this.value
+		$.uiTableFilter(t, data)
+
+
+
 
