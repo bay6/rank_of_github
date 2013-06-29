@@ -10,6 +10,7 @@ end
 
 # Github API
 gem 'github_api'
+gem 'octokit'
 
 # JSON
 gem 'jbuilder', '~> 1.2'
