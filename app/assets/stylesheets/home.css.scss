@@ -1,4 +1,5 @@
 @mixin table-base {
+  td { line-height: 80px; }
   td, th {
   	text-align: center;
   	max-width: 100px;
