@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   def self.fetch_china_users
-    @users = 10.times.collect { |page| search_users("location:china", page + 1).body.users }
+    @users = 10.times.collect { |page| search_users("location:china", page + 1).body.users }.flatten
     save_users
   end
 
@@ -10,13 +10,12 @@ class User < ActiveRecord::Base
   class << self
     def search_users keyword=nil, start_page=1, sort='followers', order='desc'
       keyword ||= "followers:>0"
-      search = Github::Search.new ssl: { login: 'cbtester', password: 'cbtester123*', verify: false }
+      search = Github::Search.new login: 'cbtester', password: 'cbtester123*', ssl: { verify: false }
       search.users "#{keyword}?start_page=#{start_page}&sort=#{sort}&order=#{order}"
     end
 
     def save_users
       @users.each do |user|
-        binding.pry
         params = {
           uid:         user.id,
           gravatar_id: user.gravatar_id,
