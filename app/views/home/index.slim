@@ -1,8 +1,11 @@
 div.main#search_area
 
-  div class="navbar-search pull-right"
+  div class="search navbar-search pull-left"
     input id="searchbox" type="text" class="search-query" placeholder="Search"
 
+  span.pull-right
+    = paginate @users
+  
   table id="users_table" class="list table table-striped table-hover"
     thead
       tr
@@ -15,3 +18,14 @@ div.main#search_area
         th 贡献值
     tbody
       = render partial: 'user_list', collection: @users, as: :user
+
+  div.pagination
+    ul.pull-right
+      li = paginate @users
+  
+  / div.pagination
+  /   = link_to "#", "&laquo;", class: "first", data-action: "first"
+  /   = link_to "#", "&lsaquo;", class: "previous", data-action: "previous"
+  /   input type="text" readonly="readonly" data-max-page="40" 
+  /   = link_to "#", "&rsaquo;", class: "next", data-action: "next"
+  /   = link_to "#", "&raquo;", class: "last", data-action: "last"
