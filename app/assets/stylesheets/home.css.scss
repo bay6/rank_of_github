@@ -1,8 +1,13 @@
+@mixin table-base {
+  td, th {
+  	text-align: center;
+  	max-width: 100px;
+  }
+}
 .main {
 	width: 970px;
 	margin: 0 auto;
 }
-tr th, td {
-	width: 100px;
-	padding: 0 auto;
+.table {
+	@include table-base;
 }
