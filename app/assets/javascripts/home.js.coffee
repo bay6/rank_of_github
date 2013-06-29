@@ -17,6 +17,16 @@ $(document).ready ->
 		data = this.value
 		$.uiTableFilter(t, data)
 
+	# go to top function
+	goTop = $('#goTop').hide()
+	$(window).on 'scroll', ->
+		if $(this).scrollTop() > 100
+			goTop.fadeIn()
+		else
+			goTop.fadeOut()
 
+	$('#goTop a').click ->
+		$('body, html').animate {scrollTop: 0}, 800
+		false
 
 
