@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
     end
 
     def check_user uid
-      user = User.find_by_uid uid
-      user = User.new unless user
-      return user
+      user = User.find_by_uid(uid)
+      user ||= User.new
     end
+
   end
 end
