@@ -44,6 +44,7 @@ GEM
     bson_ext (1.9.0)
       bson (~> 1.9.0)
     builder (3.1.4)
+    chronic (0.9.1)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -109,6 +110,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.1)
       pry (>= 0.9.10)
+    puma (2.1.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -175,6 +178,9 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -189,6 +195,7 @@ DEPENDENCIES
   kaminari
   mongoid!
   pry-rails
+  puma
   rails (~> 4.0.0)
   rspec-rails
   sass-rails (~> 4.0.0)
@@ -197,3 +204,4 @@ DEPENDENCIES
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
+  whenever
