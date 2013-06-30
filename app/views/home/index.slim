@@ -1,0 +1,26 @@
+div.main#search_area
+
+  div class="search navbar-search pull-left"
+    input id="searchbox" type="text" class="search-query" placeholder="Search"
+
+  span.pull-right
+    = paginate @users
+  
+  table id="users_table" class="list table table-striped table-hover"
+    thead
+      tr
+        th 排名
+        th 姓名
+        th 头像
+        th 位置
+        th 语言
+        th 关注量
+        th 贡献值
+    tbody
+      = render partial: 'user_list', collection: @users, as: :user
+
+  span.pull-right
+    = paginate @users
+
+  div#goTop.back-top
+    a href="#" 返回顶部

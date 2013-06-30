@@ -1,0 +1,15 @@
+tr
+	td
+	  = ranking_number params[:page]
+	td
+		= link_to user.fullname, user_url(user.username)
+	td 
+		= gravatar_image(user.gravatar_id)
+	td
+		= user.location
+	td 
+		= user.language
+	td 
+		= user.followers
+	td 
+		= user.contribution

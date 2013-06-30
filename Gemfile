@@ -14,6 +14,9 @@ gem 'github_api'
 # JSON
 gem 'jbuilder', '~> 1.2'
 
+# Pagination
+gem 'kaminari'
+
 group :doc do
   gem 'sdoc', require: false
 end
@@ -25,4 +28,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
+gem 'slim'
+gem 'simple_form'
 

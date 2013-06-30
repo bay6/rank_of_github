@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
           fullname:    user.fullname,
           location:    user.location,
           language:    user.language,
-          followers:   user.followers
+          followers:   user.followers,
+          username:    user.username
         }
         exist_user = check_user user.id
         exist_user.update_attributes! params
@@ -33,6 +34,5 @@ class User < ActiveRecord::Base
       user = User.find_by_uid(uid)
       user ||= User.new
     end
-
   end
 end
