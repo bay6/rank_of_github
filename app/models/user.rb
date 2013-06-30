@@ -9,12 +9,12 @@ class User
   field :language
   field :followers,    type: Integer
   field :contribution, type: Integer
-  field :contrib_startDate type:Date
-  field :contrib_endDate type:Date
+  field :contrib_startDate, type: DateTime
+  field :contrib_endDate, type: DateTime
   field :username
 
   def self.fetch_china_users
-    @users = 10.times.collect { |page| search_users("location:china", page + 1).body.users }.flatten
+    @users = 1.times.collect { |page| search_users("location:china", page + 1).body.users }.flatten
     save_users
   end
 
@@ -29,7 +29,7 @@ class User
     
     def save_users
       @users.each do |user|
-        contribs = get_user_contrib user.id
+        contribs = get_user_contrib user.username
         
         params = {
           uid:         user.id,
@@ -38,9 +38,9 @@ class User
           location:    user.location,
           language:    user.language,
           followers:   user.followers,
-          contribution: contribs.contrib_total_count
-          contrib_startDate: contribs.contrib_startDate
-          contrib_endDate: contribs.contrib_endDate
+          contribution: contribs[:contrib_total_count],
+          contrib_startDate: contribs[:contrib_startDate],
+          contrib_endDate: contribs[:contrib_endDate],
           username:    user.username
         }
         exist_user = check_user user.id
@@ -48,8 +48,7 @@ class User
       end
     end
 
-    def get_user_contrib uid
-      username = User.find_by(uid: uid).username
+    def get_user_contrib username
       xml_doc = Nokogiri::XML open("https://github.com/#{ username }")
       contribs_data = xml_doc.xpath('//div[@class = "col contrib-day"]').text.split(/\n/)
       contrib_total_count = contribs_data[1].scan(/\d+/)
