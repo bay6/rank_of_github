@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class User 
   include Mongoid::Document
   field :uid
@@ -22,7 +24,7 @@ class User
       search = Github::Search.new login: 'cbtester', password: 'cbtester123*', ssl: { verify: false }
       search.users "#{keyword}?start_page=#{start_page}&sort=#{sort}&order=#{order}"
     end
-
+    
     def save_users
       @users.each do |user|
         params = {
@@ -38,6 +40,15 @@ class User
         exist_user.update params
       end
     end
+
+    def get_user_contrib uid
+      username = User.find_by(uid: uid).username
+      xml_doc = Nokogiri::XML open("https://github.com/#{ username }")
+      contribs_data = xml_doc.xpath('//div[@class = "col contrib-day"]').text.split(/\n/)
+      contrib_total_count = contribs_data[1].scan(/\d+/)
+      contrib_startDate = contribs_data[2].split('-')[0]
+      contrib_endDate = contribs_data[2].split('-')[1]
+    end  
 
     def check_user uid
       user = User.find_by(uid: uid)
