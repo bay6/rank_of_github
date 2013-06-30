@@ -9,6 +9,8 @@ class User
   field :language
   field :followers,    type: Integer
   field :contribution, type: Integer
+  field :contrib_startDate type:Date
+  field :contrib_endDate type:Date
   field :username
 
   def self.fetch_china_users
@@ -27,6 +29,8 @@ class User
     
     def save_users
       @users.each do |user|
+        contribs = get_user_contrib user.id
+        
         params = {
           uid:         user.id,
           gravatar_id: user.gravatar_id,
@@ -34,6 +38,9 @@ class User
           location:    user.location,
           language:    user.language,
           followers:   user.followers,
+          contribution: contribs.contrib_total_count
+          contrib_startDate: contribs.contrib_startDate
+          contrib_endDate: contribs.contrib_endDate
           username:    user.username
         }
         exist_user = check_user user.id
