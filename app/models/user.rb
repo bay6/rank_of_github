@@ -34,6 +34,5 @@ class User < ActiveRecord::Base
       user = User.find_by_uid(uid)
       user ||= User.new
     end
-
   end
 end
