@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
 gem 'rails', "~> 4.0.0"
 gem 'pry-rails'
@@ -21,6 +21,9 @@ gem 'bson_ext'
 
 # Github API
 gem 'github_api'
+
+# Retrive more user data
+gem "nokogiri"
 
 # JSON
 gem 'jbuilder', '~> 1.2'
