@@ -3,6 +3,7 @@ source 'http://ruby.taobao.org'
 gem 'rails', "~> 4.0.0"
 gem 'pry-rails'
 gem 'sqlite3'
+gem 'puma'
 
 group :develop, :test do
   gem 'rspec-rails'
@@ -10,6 +11,9 @@ end
 
 group :production do
 end
+
+# Whenever
+gem 'whenever', :require => false
 
 # MongoDB database
 gem 'mongoid', github: 'mongoid/mongoid'
