@@ -9,6 +9,6 @@ module HomeHelper
   end
 
   def ranking_number pagenumber
-    1
+    pagenumber * 30 + 1
   end
 end
