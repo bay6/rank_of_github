@@ -2,19 +2,18 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', "~> 4.0.0"
 gem 'pry-rails'
+gem 'sqlite3'
 
 group :develop, :test do
   gem 'rspec-rails'
-  gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg'
 end
 
 # MongoDB database
-# gem 'mongoid', github: 'mongoid/mongoid'
-# gem 'bson_ext'
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
 
 # Github API
 gem 'github_api'
