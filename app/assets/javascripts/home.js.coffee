@@ -29,6 +29,7 @@ ready = ->
 		$('body, html').animate {scrollTop: 0}, 800
 		false
 
+# play with turbolinks
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
