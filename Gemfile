@@ -11,6 +11,9 @@ end
 # Github API
 gem 'github_api'
 
+# Retrive more user data
+gem "nokogiri"
+
 # JSON
 gem 'jbuilder', '~> 1.2'
 
