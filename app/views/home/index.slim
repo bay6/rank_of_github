@@ -19,9 +19,8 @@ div.main#search_area
     tbody
       = render partial: 'user_list', collection: @users, as: :user
 
-  div.pagination
-    ul.pull-right
-      li = paginate @users
+  span.pull-right
+    = paginate @users
 
   div#goTop.back-top
     a href="#" 返回顶部
