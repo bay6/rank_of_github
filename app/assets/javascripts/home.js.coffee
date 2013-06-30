@@ -11,7 +11,7 @@
 # 		jo.show()
 
 
-$(document).ready ->
+ready = ->
 	$("#searchbox").keyup ->
 		t = $('table')
 		data = this.value
@@ -28,5 +28,8 @@ $(document).ready ->
 	$('#goTop a').click ->
 		$('body, html').animate {scrollTop: 0}, 800
 		false
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
 
 
