@@ -10,7 +10,8 @@ simple of analyze github data , report as line chart
 gem install rails --version=4.0.0
 ```
 
-2. We use mongodb as the database, if you use MacOS X, you can easily install mongodb by run commands
+2. We use mongodb as the database, 
+if you use MacOS X, you can easily install mongodb using [homebrew](http://mxcl.github.io/homebrew/)
 ```
 brew install mongodb
 ```
