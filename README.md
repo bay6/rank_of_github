@@ -17,6 +17,7 @@ if you use Mac OSX, you can easily install mongodb using [homebrew](http://mxcl.
 
 ```
 brew install mongodb
+mongod
 ```
 
 We still need to fetch data manually, and we will fix it as soon as possible.
