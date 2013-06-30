@@ -44,14 +44,14 @@ class User
           username:    user.username
         }
         exist_user = check_user user.id
-        exist_user.update params
+        exist_user.update_attributes params
       end
     end
 
     def get_user_contrib username
       xml_doc = Nokogiri::XML open("https://github.com/#{ username }")
       contribs_data = xml_doc.xpath('//div[@class = "col contrib-day"]').text.split(/\n/)
-      contrib_total_count = contribs_data[1].scan(/\d+/)
+      contrib_total_count = contribs_data[1].gsub(/\D/, "")
       contrib_startDate = contribs_data[2].split('-')[0].strip
       contrib_endDate = contribs_data[2].split('-')[1].strip
       {contrib_total_count:contrib_total_count, contrib_startDate:contrib_startDate, contrib_endDate:contrib_endDate}
