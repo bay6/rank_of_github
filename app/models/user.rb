@@ -1,4 +1,13 @@
-class User < ActiveRecord::Base
+class User 
+  include Mongoid::Document
+  field :uid
+  field :gravatar_id
+  field :fullname
+  field :location
+  field :language
+  field :followers,    type: Integer
+  field :contribution, type: Integer
+  field :username
 
   def self.fetch_china_users
     @users = 10.times.collect { |page| search_users("location:china", page + 1).body.users }.flatten
@@ -31,7 +40,7 @@ class User < ActiveRecord::Base
     end
 
     def check_user uid
-      user = User.find_by_uid(uid)
+      user = User.find_by(uid: uid)
       user ||= User.new
     end
   end

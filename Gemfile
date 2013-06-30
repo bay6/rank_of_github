@@ -8,6 +8,10 @@ group :develop, :test do
   gem 'rspec-rails'
 end
 
+# MongoDB database
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
+
 # Github API
 gem 'github_api'
 
@@ -29,5 +33,4 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'slim'
-gem 'simple_form'
 
