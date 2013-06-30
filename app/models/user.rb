@@ -35,7 +35,7 @@ class User
           username:    user.username
         }
         exist_user = check_user user.id
-        exist_user.update_attributes! params
+        exist_user.update params
       end
     end
 
