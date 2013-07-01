@@ -9,6 +9,7 @@ class User
   field :language
   field :followers,    type: Integer
   field :contribution, type: Integer
+  field :current_streak, type: Integer
   field :contrib_startDate, type: DateTime
   field :contrib_endDate, type: DateTime
   field :username
@@ -39,6 +40,7 @@ class User
           language:    user.language,
           followers:   user.followers,
           contribution: contribs[:contrib_total_count],
+          current_streak: contribs[:current_streak_days],
           contrib_startDate: contribs[:contrib_startDate],
           contrib_endDate: contribs[:contrib_endDate],
           username:    user.username
@@ -50,11 +52,17 @@ class User
 
     def get_user_contrib username
       xml_doc = Nokogiri::XML open("https://github.com/#{ username }")
+      # get total contributions
       contribs_data = xml_doc.xpath('//div[@class = "col contrib-day"]').text.split(/\n/)
       contrib_total_count = contribs_data[1].gsub(/\D/, "")
       contrib_startDate = contribs_data[2].split('-')[0].strip
       contrib_endDate = contribs_data[2].split('-')[1].strip
-      {contrib_total_count:contrib_total_count, contrib_startDate:contrib_startDate, contrib_endDate:contrib_endDate}
+      
+      # get current streak
+      streak_data =  xml_doc.xpath('//div[@class = "col contrib-streak-current"]').text.split(/\n/)
+      streak_days = streak_data[1].gsub(/\D/, "") # how many days of current streak
+      {contrib_total_count:contrib_total_count, contrib_startDate:contrib_startDate, 
+        contrib_endDate:contrib_endDate, current_streak_days: streak_days}
     end  
 
     def check_user uid
