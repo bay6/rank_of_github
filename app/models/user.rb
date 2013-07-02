@@ -7,12 +7,12 @@ class User
   field :fullname
   field :location
   field :language
-  field :followers,    type: Integer
-  field :contribution, type: Integer
-  field :current_streak, type: Integer
-  field :contrib_startDate, type: DateTime
-  field :contrib_endDate, type: DateTime
   field :username
+  field :followers,         type: Integer
+  field :contrib_total,     type: Integer
+  field :current_streak,    type: Integer
+  field :contrib_startDate, type: DateTime
+  field :contrib_endDate,   type: DateTime
 
   def self.fetch_china_users
     @users = 1.times.collect { |page| search_users("location:china", page + 1).body.users }.flatten
@@ -33,17 +33,17 @@ class User
         contribs = get_user_contrib user.username
         
         params = {
-          uid:         user.id,
-          gravatar_id: user.gravatar_id,
-          fullname:    user.fullname,
-          location:    user.location,
-          language:    user.language,
-          followers:   user.followers,
-          contribution: contribs[:contrib_total_count],
-          current_streak: contribs[:current_streak_days],
+          uid:               user.id,
+          gravatar_id:       user.gravatar_id,
+          fullname:          user.fullname,
+          location:          user.location,
+          language:          user.language,
+          followers:         user.followers,
+          username:          user.username,
+          contrib_total:     contribs[:contrib_total_count],
+          current_streak:    contribs[:current_streak_days],
           contrib_startDate: contribs[:contrib_startDate],
-          contrib_endDate: contribs[:contrib_endDate],
-          username:    user.username
+          contrib_endDate:   contribs[:contrib_endDate]
         }
         user = User.find_or_initialize_by uid: user.id
         user.update_attributes params
@@ -61,12 +61,8 @@ class User
       # get current streak
       streak_data =  xml_doc.xpath('//div[@class = "col contrib-streak-current"]').text.split(/\n/)
       streak_days = streak_data[1].gsub(/\D/, "") # how many days of current streak
-      {contrib_total_count:contrib_total_count, contrib_startDate:contrib_startDate, 
-        contrib_endDate:contrib_endDate, current_streak_days: streak_days}
+      {contrib_total_count: contrib_total_count, contrib_startDate: contrib_startDate, 
+        contrib_endDate: contrib_endDate, current_streak_days: streak_days}
     end  
-
-    # def check_user uid
-    #   user = User.where(uid: uid).exists? ? User.find_by(uid: uid) : User.new
-    # end
   end
 end
