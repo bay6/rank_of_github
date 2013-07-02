@@ -66,8 +66,7 @@ class User
     end  
 
     def check_user uid
-      user = User.find_by(uid: uid)
-      user ||= User.new
+      user = User.where(uid: uid).exists? ? User.find_by(uid: uid) : User.new
     end
   end
 end
