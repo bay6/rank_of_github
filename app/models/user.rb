@@ -45,8 +45,8 @@ class User
           contrib_endDate: contribs[:contrib_endDate],
           username:    user.username
         }
-        exist_user = check_user user.id
-        exist_user.update_attributes params
+        user = User.find_or_initialize_by uid: user.id
+        user.update_attributes params
       end
     end
 
@@ -65,8 +65,8 @@ class User
         contrib_endDate:contrib_endDate, current_streak_days: streak_days}
     end  
 
-    def check_user uid
-      user = User.where(uid: uid).exists? ? User.find_by(uid: uid) : User.new
-    end
+    # def check_user uid
+    #   user = User.where(uid: uid).exists? ? User.find_by(uid: uid) : User.new
+    # end
   end
 end
